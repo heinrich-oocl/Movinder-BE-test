@@ -34,6 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
     public String test() {
         return "success in test";
     }

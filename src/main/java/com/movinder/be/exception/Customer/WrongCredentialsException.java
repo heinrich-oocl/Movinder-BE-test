@@ -1,4 +1,4 @@
-package com.movinder.be.exception;
+package com.movinder.be.exception.Customer;
 
 public class WrongCredentialsException extends RuntimeException {
     public WrongCredentialsException() {

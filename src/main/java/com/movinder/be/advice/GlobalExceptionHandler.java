@@ -1,9 +1,11 @@
 package com.movinder.be.advice;
 
-import com.movinder.be.exception.CustomerDataNotCompleteException;
-import com.movinder.be.exception.CustomerNameAlreadyExistException;
-import com.movinder.be.exception.CustomerNotFoundException;
-import com.movinder.be.exception.WrongCredentialsException;
+import com.movinder.be.exception.Customer.CustomerDataNotCompleteException;
+import com.movinder.be.exception.InvalidIDException;
+import com.movinder.be.exception.Customer.CustomerNameAlreadyExistException;
+import com.movinder.be.exception.Customer.CustomerNotFoundException;
+import com.movinder.be.exception.Customer.WrongCredentialsException;
+import com.movinder.be.exception.MalformedRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -18,16 +20,16 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage());
     }
 
-    @ExceptionHandler({CustomerDataNotCompleteException.class, CustomerNameAlreadyExistException.class, WrongCredentialsException.class})
+    @ExceptionHandler({InvalidIDException.class, MalformedRequestException.class, CustomerNameAlreadyExistException.class, CustomerDataNotCompleteException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse malformedRequest(Exception exception) {
-        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage());
+        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
     }
 
     @ExceptionHandler({WrongCredentialsException.class})
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ErrorResponse authenticationError(Exception exception) {
-        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage());
+        return new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
     }
 
 }

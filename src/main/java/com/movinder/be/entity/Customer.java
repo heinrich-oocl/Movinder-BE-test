@@ -1,5 +1,6 @@
 package com.movinder.be.entity;
 
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -8,7 +9,10 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public class Customer {
     @MongoId(FieldType.OBJECT_ID)
     private String customerId;
-    private String name;
+
+    @Indexed(unique = true)
+    private String customerName;
+
     private String password;
     private String gender;
     private Integer age;
@@ -19,9 +23,9 @@ public class Customer {
     private Boolean showAge;
     private Boolean showStatus;
 
-    public Customer(String customerId, String name, String password, String gender, Integer age, String status){
+    public Customer(String customerId, String customerName, String password, String gender, Integer age, String status){
         this.customerId = customerId;
-        this.name = name;
+        this.customerName = customerName;
         this.password = password;
         this.gender = gender;
         this.age = age;
@@ -40,12 +44,12 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getGender() {

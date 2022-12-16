@@ -1,12 +1,17 @@
 package com.movinder.be.service;
 
+
 import com.movinder.be.controller.dto.CustomerAuthenticateRequest;
 import com.movinder.be.entity.Customer;
-import com.movinder.be.exception.CustomerDataNotCompleteException;
-import com.movinder.be.exception.CustomerNameAlreadyExistException;
-import com.movinder.be.exception.CustomerNotFoundException;
-import com.movinder.be.exception.WrongCredentialsException;
+import com.movinder.be.exception.Customer.CustomerDataNotCompleteException;
+import com.movinder.be.exception.InvalidIDException;
+import com.movinder.be.exception.Customer.CustomerNameAlreadyExistException;
+import com.movinder.be.exception.Customer.CustomerNotFoundException;
+import com.movinder.be.exception.Customer.WrongCredentialsException;
+import com.movinder.be.exception.MalformedRequestException;
 import com.movinder.be.repository.CustomerRepository;
+import org.bson.types.ObjectId;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -22,11 +27,11 @@ public class CustomerService {
 
     public Customer authenticate(CustomerAuthenticateRequest customerAuthenticateRequest) {
 
-        if (!customerMongoRepository.existsByName(customerAuthenticateRequest.getUsername())) {
+        if (!customerMongoRepository.existsByCustomerName(customerAuthenticateRequest.getUsername())) {
             throw new WrongCredentialsException();
         }
 
-        Customer customer = customerMongoRepository.findByName(customerAuthenticateRequest.getUsername());
+        Customer customer = customerMongoRepository.findByCustomerName(customerAuthenticateRequest.getUsername());
         if (customer.getPassword().equals(customerAuthenticateRequest.getPassword())) {
             return customer;
         } else {
@@ -36,28 +41,52 @@ public class CustomerService {
 
 
     public Customer createCustomerAccount(Customer customer) {
-        if (customerMongoRepository.existsByName(customer.getName())) {
+
+        if (customer.getCustomerId() != null){
+            throw new MalformedRequestException("Create customer request should not contain ID");
+        }
+        validateCustomerAttributes(customer);
+
+        System.out.println(customer.getCustomerName());
+
+        try {
+            return customerMongoRepository.save(customer);
+        } catch (DuplicateKeyException customerExist) {
             throw new CustomerNameAlreadyExistException();
         }
-        return customerMongoRepository.save(customer);
     }
 
     public Customer updateCustomer(Customer customer) {
-        boolean containsNullValue =
-                Stream
-                        .of(customer.getName(), customer.getPassword(), customer.getGender(), customer.getAge(),
-                                customer.getStatus(), customer.getSelfIntro(), customer.getShowName(),
-                                customer.getShowGender(), customer.getShowAge(), customer.getShowStatus())
-                        .anyMatch(Objects::isNull);
 
-        if (containsNullValue) {
-            throw new CustomerDataNotCompleteException();
-        }
+        validateCustomerID(customer);
+        validateCustomerAttributes(customer);
         if (!customerMongoRepository.existsById(customer.getCustomerId())) {
             throw new CustomerNotFoundException();
         }
         return customerMongoRepository.save(customer);
 
+    }
+
+    // checks if object contains null attributes
+    private void validateCustomerAttributes(Customer customer) {
+
+        boolean containsNull = Stream
+                .of(customer.getCustomerName(), customer.getPassword(), customer.getGender(), customer.getAge(),
+                        customer.getStatus(), customer.getSelfIntro(), customer.getShowName(),
+                        customer.getShowGender(), customer.getShowAge(), customer.getShowStatus())
+                .anyMatch(Objects::isNull);
+
+        if (containsNull){
+            throw new CustomerDataNotCompleteException();
+        }
+
+    }
+
+    //  valid if ID is valid Object ID
+    private void validateCustomerID(Customer customer){
+        if (!ObjectId.isValid(customer.getCustomerId())){
+            throw new InvalidIDException();
+        }
     }
 
 }
