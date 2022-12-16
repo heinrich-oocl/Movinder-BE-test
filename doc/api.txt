@@ -1,0 +1,22 @@
+User
+1. Login
+2. Create account
+3. Update account
+
+Search
+1. Get all movie
+2. Find by movie
+3. Get all cinema
+4. Find by cinema
+
+Order details
+1. Get session details
+2. Make a booking
+    1. Ticket
+    2. Food
+3. Find past booking
+
+Chat:
+1. See chat per movie
+2. Send chat
+

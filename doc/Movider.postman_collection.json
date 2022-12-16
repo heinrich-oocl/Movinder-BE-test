@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "9550a94e-df41-4f07-8383-9b9d209c6c85",
+		"name": "Movider",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19088795"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Sanity check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tom 22\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639c853751d7937bc0d00665\",\n    \"name\": \"Tom b\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Customer with error (missing name)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639c853751d7937bc0d00665\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Customer not found",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639c853751d7937bc0d00664\",\n    \"name\": \"Tom b\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate fail with error",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"a\",\n    \"password\": \"a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer/authenticate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Tom b\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer/authenticate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8888",
+			"type": "string"
+		}
+	]
+}
