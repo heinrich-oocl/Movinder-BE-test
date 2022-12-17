@@ -1,14 +1,12 @@
 package com.movinder.be.controller;
 
 import com.movinder.be.entity.Cinema;
-import com.movinder.be.entity.Customer;
 import com.movinder.be.entity.Movie;
 import com.movinder.be.entity.MovieSession;
 import com.movinder.be.service.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

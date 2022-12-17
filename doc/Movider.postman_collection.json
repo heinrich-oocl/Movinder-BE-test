@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customerName\": \"Tom2\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"raw": "{\n    \"customerName\": \"Ben rw\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -272,7 +272,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"datetime\": \"2022-11-17T03:45:42.01\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"1\"\n}",
+							"raw": "{\n    \"datetime\": \"2022-12-22T03:45:00\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"639d62670090d25ba4cb58d4\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -280,11 +280,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/session",
+							"raw": "{{host}}/movie/session",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
+								"movie",
 								"session"
 							]
 						}
@@ -295,7 +296,18 @@
 					"name": "get movie session by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/session/639d355e7f5d993cd977d926",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"session",
+								"639d355e7f5d993cd977d926"
+							]
+						}
 					},
 					"response": []
 				}
@@ -311,7 +323,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"datetime\": \"2022-11-17T03:45:42.01\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"1\"\n}",
+							"raw": "{\n    \"movieName\": \"Movie 4\",\n    \"description\": \"movie 4 description\",\n    \"duration\": \"120\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -319,12 +331,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/session",
+							"raw": "{{host}}/movie/film",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"session"
+								"movie",
+								"film"
 							]
 						}
 					},
@@ -334,7 +347,18 @@
 					"name": "get film by ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/film/639d61e87b446627273d27f4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"film",
+								"639d61e87b446627273d27f4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -342,7 +366,152 @@
 					"name": "find all film",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/film?from=2022-11-18T03:45:42.01&to=2023-12-18T03:45:42.01",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"film"
+							],
+							"query": [
+								{
+									"key": "movieName",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "2022-11-18T03:45:42.01"
+								},
+								{
+									"key": "to",
+									"value": "2023-12-18T03:45:42.01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Food",
+			"item": [
+				{
+					"name": "find all food",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/food",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"food"
+							],
+							"query": [
+								{
+									"key": "foodName",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find food by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/food/639dc14cb64fa559d6100d0c",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"food",
+								"639dc14cb64fa559d6100d0c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create food",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"foodName\": \"Coke\",\n    \"description\": \"1L\",\n    \"price\": 30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/booking/food",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"food"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "find ticket by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/ticket/639dc5047b94ce26f4ca4c8f",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"ticket",
+								"639dc5047b94ce26f4ca4c8f"
+							]
+						}
 					},
 					"response": []
 				}

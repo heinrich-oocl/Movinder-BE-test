@@ -1,7 +1,7 @@
 package com.movinder.be.controller;
 
-import com.movinder.be.entity.Cinema;
 import com.movinder.be.entity.Food;
+import com.movinder.be.entity.Ticket;
 import com.movinder.be.service.BookingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +41,16 @@ public class BookingController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public Food addFood(@RequestBody Food food){
         return bookingService.createFood(food);
+    }
+
+
+    /*
+    Ticket
+     */
+    @GetMapping("/ticket/{ticketID}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Ticket getTicketById(@PathVariable String ticketID){
+        return bookingService.findTicketById(ticketID);
     }
 
 
