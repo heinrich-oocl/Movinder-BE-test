@@ -3,14 +3,12 @@ package com.movinder.be.service;
 
 import com.movinder.be.controller.dto.CustomerAuthenticateRequest;
 import com.movinder.be.entity.Customer;
-import com.movinder.be.exception.Customer.CustomerDataNotCompleteException;
-import com.movinder.be.exception.InvalidIDException;
 import com.movinder.be.exception.Customer.CustomerNameAlreadyExistException;
 import com.movinder.be.exception.Customer.CustomerNotFoundException;
 import com.movinder.be.exception.Customer.WrongCredentialsException;
 import com.movinder.be.exception.MalformedRequestException;
+import com.movinder.be.exception.RequestDataNotCompleteException;
 import com.movinder.be.repository.CustomerRepository;
-import org.bson.types.ObjectId;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
@@ -77,7 +75,7 @@ public class CustomerService {
                 .anyMatch(Objects::isNull);
 
         if (containsNull){
-            throw new CustomerDataNotCompleteException();
+            throw new RequestDataNotCompleteException("Customer");
         }
 
     }

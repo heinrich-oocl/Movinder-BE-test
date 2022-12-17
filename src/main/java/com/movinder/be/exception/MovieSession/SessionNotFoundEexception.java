@@ -1,7 +1,7 @@
 package com.movinder.be.exception.MovieSession;
 
-public class SessionNotFoundError extends RuntimeException{
-    public SessionNotFoundError() {
+public class SessionNotFoundEexception extends RuntimeException{
+    public SessionNotFoundEexception() {
         super("Session not found for the ID provided");
     }
 
