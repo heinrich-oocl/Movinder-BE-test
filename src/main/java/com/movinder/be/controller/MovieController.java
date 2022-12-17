@@ -31,7 +31,7 @@ public class MovieController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Cinema> getCinema(@RequestParam(defaultValue = "") String cinemaName,
                                   @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,
-                                  @RequestParam(defaultValue = "20") Integer pageSize){
+                                  @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) Integer pageSize){
         return movieService.getCinema(cinemaName, page, pageSize);
     }
 
@@ -42,7 +42,6 @@ public class MovieController {
         return movieService.findCinemaById(cinemaID);
     }
 
-    // TESTING USE ONLY
     @PostMapping("/cinema")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Cinema addCinema(@RequestBody Cinema cinema){

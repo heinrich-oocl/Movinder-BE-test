@@ -3,10 +3,10 @@ package com.movinder.be.service;
 
 import com.movinder.be.controller.dto.CustomerAuthenticateRequest;
 import com.movinder.be.entity.Customer;
-import com.movinder.be.exception.Customer.CustomerNameAlreadyExistException;
-import com.movinder.be.exception.Customer.CustomerNotFoundException;
 import com.movinder.be.exception.Customer.WrongCredentialsException;
+import com.movinder.be.exception.IdNotFoundException;
 import com.movinder.be.exception.MalformedRequestException;
+import com.movinder.be.exception.ProvidedKeyAlreadyExistException;
 import com.movinder.be.exception.RequestDataNotCompleteException;
 import com.movinder.be.repository.CustomerRepository;
 import org.springframework.dao.DuplicateKeyException;
@@ -50,7 +50,7 @@ public class CustomerService {
         try {
             return customerMongoRepository.save(customer);
         } catch (DuplicateKeyException customerExist) {
-            throw new CustomerNameAlreadyExistException();
+            throw new ProvidedKeyAlreadyExistException("Customer name");
         }
     }
 
@@ -59,7 +59,7 @@ public class CustomerService {
         Utility.validateID(customer.getCustomerId());
         validateCustomerAttributes(customer);
         if (!customerMongoRepository.existsById(customer.getCustomerId())) {
-            throw new CustomerNotFoundException();
+            throw new IdNotFoundException("Customer");
         }
         return customerMongoRepository.save(customer);
 
@@ -77,7 +77,6 @@ public class CustomerService {
         if (containsNull){
             throw new RequestDataNotCompleteException("Customer");
         }
-
     }
 
 }

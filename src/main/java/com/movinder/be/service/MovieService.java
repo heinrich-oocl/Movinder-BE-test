@@ -4,12 +4,10 @@ import com.movinder.be.entity.Cinema;
 import com.movinder.be.entity.Movie;
 import com.movinder.be.entity.MovieSession;
 import com.movinder.be.entity.Seat;
-import com.movinder.be.exception.Cinema.CinemaNotFoundException;
+import com.movinder.be.exception.IdNotFoundException;
 import com.movinder.be.exception.MalformedRequestException;
 import com.movinder.be.exception.MovieSession.SeatOccupiedExcpetion;
-import com.movinder.be.exception.MovieSession.SessionNotFoundEexception;
 import com.movinder.be.exception.RequestDataNotCompleteException;
-import com.movinder.be.exception.movie.MovieNotFoundException;
 import com.movinder.be.repository.CinemaRepository;
 import com.movinder.be.repository.MovieRepository;
 import com.movinder.be.repository.MovieSessionRepository;
@@ -56,7 +54,7 @@ public class MovieService {
 
     public Cinema findCinemaById(String id){
         Utility.validateID(id);
-        return cinemaRepository.findById(id).orElseThrow(CinemaNotFoundException::new);
+        return cinemaRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Cinema"));
     }
 
     /*
@@ -83,7 +81,7 @@ public class MovieService {
 
     public MovieSession findMovieSessionById(String id){
         Utility.validateID(id);
-        return movieSessionRepository.findById(id).orElseThrow(SessionNotFoundEexception::new);
+        return movieSessionRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Movie Session"));
     }
 
     // TESTING ONLY
@@ -97,7 +95,7 @@ public class MovieService {
     }
 
     public MovieSession bookSeats(String sessionId, List<Seat> seats){
-        MovieSession session = movieSessionRepository.findById(sessionId).orElseThrow(SessionNotFoundEexception::new);
+        MovieSession session = movieSessionRepository.findById(sessionId).orElseThrow(() -> new IdNotFoundException("Movie Session"));
 
         ArrayList<ArrayList<Boolean>> avaialbleSeatings = session.getAvailableSeatings();
 
@@ -144,14 +142,14 @@ public class MovieService {
 
     public Movie findMovieById(String id){
         Utility.validateID(id);
-        return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
+        return movieRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Movie"));
     }
 
     // update lastShowTime and session ID
     private void updateMovieInfo(MovieSession movieSession){
         Movie movie = movieRepository
                 .findById(movieSession.getMovieId())
-                .orElseThrow(MovieNotFoundException::new);
+                .orElseThrow(() -> new IdNotFoundException("Movie"));
         if (movieSession.getDatetime().isAfter(movie.getLastShowDateTime())){
             movie.setLastShowDateTime(movieSession.getDatetime());
         }
