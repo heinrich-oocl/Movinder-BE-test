@@ -18,10 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -77,11 +75,10 @@ public class MovieService {
         // check if movie exist, if not will throw exception
         findMovieById(movieSession.getMovieId());
 
-        updateMovieLastShowTime(movieSession.getMovieId(), movieSession.getDatetime());
+        MovieSession savedMovieSession = movieSessionRepository.save(movieSession);
+        updateMovieInfo(savedMovieSession);
 
-
-
-        return movieSessionRepository.save(movieSession);
+        return savedMovieSession;
     }
 
     public MovieSession findMovieSessionById(String id){
@@ -94,7 +91,7 @@ public class MovieService {
         Utility.validateID(movieSession.getSessionId());
         validateMovieSessionAttributes(movieSession);
 
-        updateMovieLastShowTime(movieSession.getMovieId(), movieSession.getDatetime());
+        updateMovieInfo(movieSession);
 
         return movieSessionRepository.save(movieSession);
     }
@@ -150,11 +147,18 @@ public class MovieService {
         return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
     }
 
-    private void updateMovieLastShowTime(String movieId, LocalDateTime newSessionTime){
-        Movie movie = movieRepository.findById(movieId).orElseThrow(MovieNotFoundException::new);
-        if (newSessionTime.isAfter(movie.getLastShowDateTime())){
-            movie.setLastShowDateTime(newSessionTime);
+    // update lastShowTime and session ID
+    private void updateMovieInfo(MovieSession movieSession){
+        Movie movie = movieRepository
+                .findById(movieSession.getMovieId())
+                .orElseThrow(MovieNotFoundException::new);
+        if (movieSession.getDatetime().isAfter(movie.getLastShowDateTime())){
+            movie.setLastShowDateTime(movieSession.getDatetime());
         }
+        if (!movie.getMovieSessionIds().contains(movieSession.getSessionId())){
+            movie.getMovieSessionIds().add(movieSession.getSessionId());
+        }
+        movieRepository.save(movie);
     }
 
     /*

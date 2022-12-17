@@ -8,6 +8,7 @@ import com.movinder.be.exception.Customer.WrongCredentialsException;
 import com.movinder.be.exception.MalformedRequestException;
 import com.movinder.be.exception.MovieSession.SessionNotFoundEexception;
 import com.movinder.be.exception.RequestDataNotCompleteException;
+import com.movinder.be.exception.movie.MovieNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler({CustomerNotFoundException.class, CinemaNotFoundException.class, SessionNotFoundEexception.class})
+    @ExceptionHandler({CustomerNotFoundException.class, CinemaNotFoundException.class, SessionNotFoundEexception.class, MovieNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse idNotFound(Exception exception) {
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage());

@@ -18,7 +18,7 @@ public class Movie {
 
     private String description;
     private Integer duration; // in minutes
-    private ArrayList<Integer> movieSessionIds;
+    private ArrayList<String> movieSessionIds;
     private LocalDateTime lastShowDateTime;
 
     public String getMovieId() {
@@ -53,11 +53,11 @@ public class Movie {
         this.duration = duration;
     }
 
-    public ArrayList<Integer> getMovieSessionIds() {
+    public ArrayList<String> getMovieSessionIds() {
         return movieSessionIds;
     }
 
-    public void setMovieSessionIds(ArrayList<Integer> movieSessionIds) {
+    public void setMovieSessionIds(ArrayList<String> movieSessionIds) {
         this.movieSessionIds = movieSessionIds;
     }
 
