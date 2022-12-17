@@ -2,6 +2,7 @@ package com.movinder.be.controller;
 
 import com.movinder.be.entity.Cinema;
 import com.movinder.be.entity.Customer;
+import com.movinder.be.entity.MovieSession;
 import com.movinder.be.service.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class MovieController {
     }
 
     // TESTING USE ONLY
-    @PostMapping("cinema")
+    @PostMapping("/cinema")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Cinema addCinema(@RequestBody Cinema cinema){
         return movieService.addCinema(cinema);
@@ -43,6 +44,18 @@ public class MovieController {
 
 
     //session
+    @PostMapping("/session")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public MovieSession addMovieSession(@RequestBody MovieSession movieSession){
+        return movieService.addMovieSession(movieSession);
+    }
+
+
+    @GetMapping("/session/{sessionID}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public MovieSession getSessionById(@PathVariable String sessionID){
+        return movieService.findMovieSessionById(sessionID);
+    }
 
 
 }

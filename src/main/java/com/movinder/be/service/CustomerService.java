@@ -58,7 +58,7 @@ public class CustomerService {
 
     public Customer updateCustomer(Customer customer) {
 
-        validateCustomerID(customer);
+        Utility.validateID(customer.getCustomerId());
         validateCustomerAttributes(customer);
         if (!customerMongoRepository.existsById(customer.getCustomerId())) {
             throw new CustomerNotFoundException();
@@ -80,13 +80,6 @@ public class CustomerService {
             throw new CustomerDataNotCompleteException();
         }
 
-    }
-
-    //  valid if ID is valid Object ID
-    private void validateCustomerID(Customer customer){
-        if (!ObjectId.isValid(customer.getCustomerId())){
-            throw new InvalidIDException();
-        }
     }
 
 }
