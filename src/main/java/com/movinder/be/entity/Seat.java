@@ -1,31 +1,27 @@
 package com.movinder.be.entity;
 
 public class Seat {
-    private int row;
-    private int column;
+    private Integer row;
+    private Integer column;
 
-    public Seat(int row, int column){
+    public Seat(Integer row, Integer column){
         this.row = row;
         this.column = column;
     }
 
-    public Seat(){
-
-    }
-
-    public int getRow() {
+    public Integer getRow() {
         return row;
     }
 
-    public void setRow(int row) {
+    public void setRow(Integer row) {
         this.row = row;
     }
 
-    public int getColumn() {
+    public Integer getColumn() {
         return column;
     }
 
-    public void setColumn(int column) {
+    public void setColumn(Integer column) {
         this.column = column;
     }
 }

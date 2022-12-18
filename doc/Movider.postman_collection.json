@@ -272,7 +272,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"datetime\": \"2022-12-22T03:45:00\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"639d62670090d25ba4cb58d4\"\n}",
+							"raw": "{\n    \"datetime\": \"2022-12-22T03:45:00\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"639d62700090d25ba4cb58d5\",\n    \"pricing\":[\n        {\n        \"item\": \"adult\",\n        \"price\": 100\n        },\n        {\n        \"item\": \"student\",\n        \"price\": 70\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -298,14 +298,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/session/639d355e7f5d993cd977d926",
+							"raw": "{{host}}/movie/session/639d70ebc51ff209c2bdb6bf",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
 								"session",
-								"639d355e7f5d993cd977d926"
+								"639d70ebc51ff209c2bdb6bf"
 							]
 						}
 					},
@@ -510,6 +510,79 @@
 								"booking",
 								"ticket",
 								"639dc5047b94ce26f4ca4c8f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "create booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"movieSessionId\": \"639e88b3de3e9e76103bc5f5\",\n    \"ticketRequestItems\": [\n        {\n            \"item\": \"adult\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"student\",\n            \"quantity\": 1\n        }\n    ],\n    \"foodRequestItems\": [\n        {\n            \"item\": \"639dc14cb64fa559d6100d0c\",\n            \"quantity\": 1\n        }\n    ],\n    \"seatingRequests\":[\n        {\n            \"row\": 0,\n            \"column\": 1\n        },\n        {\n            \"row\": 1,\n            \"column\": 0\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/booking/order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/order/639dab4f9370b716102e1294",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"order",
+								"639dab4f9370b716102e1294"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "2022-11-18T03:45:42.01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2022-11-18T03:45:42.01",
+									"disabled": true
+								}
 							]
 						}
 					},

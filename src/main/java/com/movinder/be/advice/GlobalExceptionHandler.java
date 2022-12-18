@@ -2,6 +2,7 @@ package com.movinder.be.advice;
 
 import com.movinder.be.exception.*;
 import com.movinder.be.exception.Customer.WrongCredentialsException;
+import com.movinder.be.exception.MovieSession.SeatOccupiedExcpetion;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,7 +20,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({InvalidIDException.class,
             MalformedRequestException.class,
             ProvidedKeyAlreadyExistException.class,
-            RequestDataNotCompleteException.class})
+            RequestDataNotCompleteException.class,
+            SeatOccupiedExcpetion.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse malformedRequest(Exception exception) {
         return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage());

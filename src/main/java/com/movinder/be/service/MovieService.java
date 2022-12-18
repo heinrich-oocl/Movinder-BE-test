@@ -1,9 +1,6 @@
 package com.movinder.be.service;
 
-import com.movinder.be.entity.Cinema;
-import com.movinder.be.entity.Movie;
-import com.movinder.be.entity.MovieSession;
-import com.movinder.be.entity.Seat;
+import com.movinder.be.entity.*;
 import com.movinder.be.exception.IdNotFoundException;
 import com.movinder.be.exception.MalformedRequestException;
 import com.movinder.be.exception.MovieSession.SeatOccupiedExcpetion;
@@ -27,6 +24,9 @@ public class MovieService {
     private final CinemaRepository cinemaRepository;
     private final MovieSessionRepository movieSessionRepository;
     private final MovieRepository movieRepository;
+
+    private static final int DEFAULT_MOVIE_SEARCH_PERIOD = 3;
+
 
     public MovieService(CinemaRepository cinemaRepository, MovieSessionRepository movieSessionRepository, MovieRepository movieRepository){
         this.cinemaRepository = cinemaRepository;
@@ -95,19 +95,27 @@ public class MovieService {
     }
 
     public MovieSession bookSeats(String sessionId, List<Seat> seats){
-        MovieSession session = movieSessionRepository.findById(sessionId).orElseThrow(() -> new IdNotFoundException("Movie Session"));
+        Utility.validateID(sessionId);
+        MovieSession session = movieSessionRepository
+                .findById(sessionId)
+                .orElseThrow(() -> new IdNotFoundException("Movie Session"));
 
         ArrayList<ArrayList<Boolean>> avaialbleSeatings = session.getAvailableSeatings();
 
         seats.forEach(seat -> {
             int row = seat.getRow();
             int col = seat.getColumn();
-            Boolean available = avaialbleSeatings.get(row).get(col);
-            if (available) {
-                avaialbleSeatings.get(row).set(col, false);
-            } else {
-                throw new SeatOccupiedExcpetion();
+            try {
+                Boolean available = avaialbleSeatings.get(row).get(col);
+                if (available) {
+                    avaialbleSeatings.get(row).set(col, false);
+                } else {
+                    throw new SeatOccupiedExcpetion(seat);
+                }
+            } catch (IndexOutOfBoundsException exception){
+                throw new MalformedRequestException("Requested seat not in floor plan, col: " + col + " row: " + row);
             }
+
         });
 
         session.setAvailableSeatings(avaialbleSeatings);
@@ -132,7 +140,7 @@ public class MovieService {
 
     public List<Movie> getMovie(String movieName, Integer page, Integer pageSize, String from, String to){
         LocalDateTime fromDate = from == null ? LocalDateTime.now() : LocalDateTime.parse(from);
-        LocalDateTime toDate = to == null ? LocalDateTime.now().plusMonths(1) : LocalDateTime.parse(to);
+        LocalDateTime toDate = to == null ? LocalDateTime.now().plusMonths(DEFAULT_MOVIE_SEARCH_PERIOD) : LocalDateTime.parse(to);
         Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "lastShowDateTime");
 
         return movieRepository

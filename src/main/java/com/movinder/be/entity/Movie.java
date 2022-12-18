@@ -19,6 +19,7 @@ public class Movie {
     private String description;
     private Integer duration; // in minutes
     private ArrayList<String> movieSessionIds;
+    @Indexed
     private LocalDateTime lastShowDateTime;
 
     public String getMovieId() {

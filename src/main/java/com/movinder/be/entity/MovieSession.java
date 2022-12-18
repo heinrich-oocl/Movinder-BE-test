@@ -17,6 +17,7 @@ public class MovieSession {
     private ArrayList<ArrayList<Boolean>> availableSeatings;
     private String cinemaId;
     private String movieId;
+    private ArrayList<Pricing> pricing;
 
     public String getMovieId() {
         return movieId;
@@ -58,5 +59,11 @@ public class MovieSession {
         this.cinemaId = cinemaId;
     }
 
+    public ArrayList<Pricing> getPricing() {
+        return pricing;
+    }
 
+    public void setPricing(ArrayList<Pricing> pricing) {
+        this.pricing = pricing;
+    }
 }

@@ -16,6 +16,17 @@ Order details
     2. Food
 3. Find past booking
 
+Booking
+1. find available food
+2. Make a booking
+    booking:
+        1. tickets
+            1. type: quantity
+        2. food
+            1. id: quantity
+        3. session id
+        4. customer id
+
 Chat:
 1. See chat per movie
 2. Send chat

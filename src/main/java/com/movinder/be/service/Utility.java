@@ -6,7 +6,7 @@ import org.bson.types.ObjectId;
 public class Utility {
     public static void validateID(String id){
         if (!ObjectId.isValid(id)){
-            throw new InvalidIDException();
+            throw new InvalidIDException(id);
         }
     }
 }

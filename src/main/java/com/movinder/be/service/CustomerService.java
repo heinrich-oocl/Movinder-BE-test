@@ -79,4 +79,9 @@ public class CustomerService {
         }
     }
 
+    public Customer findByCustomerId(String customerID){
+        Utility.validateID(customerID);
+        return customerMongoRepository.findById(customerID).orElseThrow(() -> new IdNotFoundException("Customer"));
+    }
+
 }

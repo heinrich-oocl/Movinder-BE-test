@@ -16,6 +16,12 @@ public class Ticket {
     private Integer price;
     private Seat seat;
 
+    public Ticket (String ticketType, Integer price, Seat seat){
+        this.ticketType = ticketType;
+        this.price = price;
+        this.seat = seat;
+    }
+
     public String getTicketId() {
         return ticketId;
     }
