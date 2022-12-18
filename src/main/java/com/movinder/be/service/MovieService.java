@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,14 +25,19 @@ public class MovieService {
     private final CinemaRepository cinemaRepository;
     private final MovieSessionRepository movieSessionRepository;
     private final MovieRepository movieRepository;
+    private final ForumService forumService;
 
     private static final int DEFAULT_MOVIE_SEARCH_PERIOD = 3;
 
 
-    public MovieService(CinemaRepository cinemaRepository, MovieSessionRepository movieSessionRepository, MovieRepository movieRepository){
+    public MovieService(CinemaRepository cinemaRepository,
+                        MovieSessionRepository movieSessionRepository,
+                        MovieRepository movieRepository,
+                        ForumService forumService){
         this.cinemaRepository = cinemaRepository;
         this.movieSessionRepository = movieSessionRepository;
         this.movieRepository = movieRepository;
+        this.forumService = forumService;
     }
 
     /*
@@ -134,8 +140,16 @@ public class MovieService {
             throw new MalformedRequestException("Create movie session request should not contain ID");
         }
         movie.setMovieSessionIds(new ArrayList<>());
+        movie.setLastShowDateTime(LocalDateTime.ofEpochSecond(0, 0, ZoneOffset.ofHours(0)));
         validateMovieAttributes(movie);
-        return movieRepository.save(movie);
+
+        //todo throw duplicated key
+        Movie savedMovie = movieRepository.save(movie);
+
+        // auto add Room per new movie
+        forumService.addChatRoom(savedMovie.getMovieId());
+        return savedMovie;
+
     }
 
     public List<Movie> getMovie(String movieName, Integer page, Integer pageSize, String from, String to){

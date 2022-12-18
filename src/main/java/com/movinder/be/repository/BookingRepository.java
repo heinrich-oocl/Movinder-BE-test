@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface BookingRepository extends MongoRepository<Booking, String> {
     List<Booking> findByCustomerIdAndBookingTimeBetween(String customerId, LocalDateTime from, LocalDateTime to, Pageable pageable);
+
 }

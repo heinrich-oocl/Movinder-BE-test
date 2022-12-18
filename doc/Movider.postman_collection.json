@@ -323,7 +323,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"movieName\": \"Movie 4\",\n    \"description\": \"movie 4 description\",\n    \"duration\": \"120\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\"\n}",
+							"raw": "{\n    \"movieName\": \"Movie 9\",\n    \"description\": \"movie 9 description\",\n    \"duration\": \"116\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -583,6 +583,86 @@
 									"value": "2022-11-18T03:45:42.01",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Forum",
+			"item": [
+				{
+					"name": "add message",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"message\": \"test message 4\",\n    \"roomId\": \"639f14bd3a8c6e0ab2e3720a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/forum/room",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forum",
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get room messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/forum/room?roomID=639f14bd3a8c6e0ab2e3720a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forum",
+								"room"
+							],
+							"query": [
+								{
+									"key": "movieID",
+									"value": "639f13fc3a8c6e0ab2e37206",
+									"disabled": true
+								},
+								{
+									"key": "roomID",
+									"value": "639f14bd3a8c6e0ab2e3720a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get customer active rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/forum/room/639dab4f9370b716102e1294",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forum",
+								"room",
+								"639dab4f9370b716102e1294"
 							]
 						}
 					},
