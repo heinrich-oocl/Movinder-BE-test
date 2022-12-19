@@ -330,6 +330,14 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get movie sessions by movie id and cinema id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		},

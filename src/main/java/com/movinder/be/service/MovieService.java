@@ -73,6 +73,8 @@ public class MovieService {
         return cinemaIdsSet.stream().map(this::findCinemaById).collect(Collectors.toList());
     }
 
+
+
     /*
     Movie Session
      */
@@ -103,6 +105,15 @@ public class MovieService {
     public MovieSession findMovieSessionById(String id){
         Utility.validateID(id);
         return movieSessionRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Movie Session"));
+    }
+
+    public List<MovieSession> getSessionsByMovieIdAndCinemaId(String movieId, String cinemaId){
+
+        // get set of movie ids
+        return findMovieSessionsByMovieId(movieId)
+                .stream()
+                .filter(movieSessions -> movieSessions.getCinemaId().equals(cinemaId))
+                .collect(Collectors.toList());
     }
 
     // TESTING ONLY
