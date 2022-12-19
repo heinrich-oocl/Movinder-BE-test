@@ -24,19 +24,19 @@ public class ForumController {
     }
 
     //add message to room
-    @PutMapping("/room")
+    @PutMapping("/rooms")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Message addMessage(@RequestBody AddChatRequest newMessage){
         return forumService.addMessage(newMessage);
     }
 
-    @GetMapping("/room/{customerID}")
+    @GetMapping("/rooms/{customerID}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Room> getRoomByCustomerId(@PathVariable String customerID){
         return forumService.getRoomByCustomerId(customerID);
     }
 
-    @GetMapping("/room")
+    @GetMapping("/rooms")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Message> getMessageByMovieId(@RequestParam(defaultValue = "") String movieID,
                                              @RequestParam(defaultValue = "") String roomID){

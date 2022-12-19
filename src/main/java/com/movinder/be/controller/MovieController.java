@@ -25,7 +25,7 @@ public class MovieController {
     /*
     Cinema
      */
-    @GetMapping("/cinema")
+    @GetMapping("/cinemas")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Cinema> getCinema(@RequestParam(defaultValue = "") String cinemaName,
                                   @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,
@@ -33,14 +33,14 @@ public class MovieController {
         return movieService.getCinema(cinemaName, page, pageSize);
     }
 
-    @GetMapping("/cinema/{cinemaID}")
+    @GetMapping("/cinemas/{cinemaID}")
     @ResponseStatus(code = HttpStatus.OK)
     public Cinema getCinemaById(@PathVariable String cinemaID){
 
         return movieService.findCinemaById(cinemaID);
     }
 
-    @PostMapping("/cinema")
+    @PostMapping("/cinemas")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Cinema addCinema(@RequestBody Cinema cinema){
         return movieService.addCinema(cinema);
@@ -49,20 +49,20 @@ public class MovieController {
     /*
     film
      */
-    @PostMapping("/film")
+    @PostMapping("/films")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Movie addMovie(@RequestBody Movie movie){
         return movieService.addMovie(movie);
     }
 
 
-    @GetMapping("/film/{filmID}")
+    @GetMapping("/films/{filmID}")
     @ResponseStatus(code = HttpStatus.OK)
     public Movie getMovieById(@PathVariable String filmID){
         return movieService.findMovieById(filmID);
     }
 
-    @GetMapping("/film")
+    @GetMapping("/films")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Movie> getMovie(@RequestParam(defaultValue = "") String movieName,
                                 @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,
@@ -77,7 +77,7 @@ public class MovieController {
     go through all movie session with cinema ID
     deduplicate by movie id
      */
-    @GetMapping("/film/{filmID}/cinema")
+    @GetMapping("/films/{filmID}/cinemas")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Cinema> getCinemaByMovieID(@PathVariable String filmID){
 
@@ -87,14 +87,14 @@ public class MovieController {
     /*
     Session
      */
-    @PostMapping("/session")
+    @PostMapping("/sessions")
     @ResponseStatus(code = HttpStatus.CREATED)
     public MovieSession addMovieSession(@RequestBody MovieSession movieSession){
         return movieService.addMovieSession(movieSession);
     }
 
 
-    @GetMapping("/session/{sessionID}")
+    @GetMapping("/sessions/{sessionID}")
     @ResponseStatus(code = HttpStatus.OK)
     public MovieSession getSessionById(@PathVariable String sessionID){
         return movieService.findMovieSessionById(sessionID);

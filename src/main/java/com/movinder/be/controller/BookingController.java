@@ -24,7 +24,7 @@ public class BookingController {
     /*
     Food
      */
-    @GetMapping("/food")
+    @GetMapping("/foods")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Food> getFood(@RequestParam(defaultValue = "") String foodName,
                               @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,
@@ -32,14 +32,14 @@ public class BookingController {
         return bookingService.getFood(foodName, page, pageSize);
     }
 
-    @GetMapping("/food/{foodID}")
+    @GetMapping("/foods/{foodID}")
     @ResponseStatus(code = HttpStatus.OK)
     public Food getFoodById(@PathVariable String foodID){
 
         return bookingService.findFoodById(foodID);
     }
 
-    @PostMapping("/food")
+    @PostMapping("/foods")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Food addFood(@RequestBody Food food){
         return bookingService.createFood(food);
@@ -49,7 +49,7 @@ public class BookingController {
     /*
     Ticket
      */
-    @GetMapping("/ticket/{ticketID}")
+    @GetMapping("/tickets/{ticketID}")
     @ResponseStatus(code = HttpStatus.OK)
     public Ticket getTicketById(@PathVariable String ticketID){
         return bookingService.findTicketById(ticketID);
@@ -59,13 +59,13 @@ public class BookingController {
     /*
     Booking
      */
-    @PostMapping("/order")
+    @PostMapping("/orders")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Booking createBooking(@RequestBody BookingRequest bookingRequest){
         return bookingService.createBooking(bookingRequest);
     }
 
-    @GetMapping("/order/{customerID}")
+    @GetMapping("/orders/{customerID}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Booking> getOrders(@PathVariable String customerID,
                                     @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,

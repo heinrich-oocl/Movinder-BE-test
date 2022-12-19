@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customerName\": \"Ben rw\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"raw": "{\n    \"customerName\": \"Jack\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -59,7 +59,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customerId\": \"639d0e7c36a44e0b1aea317d\",\n    \"customerName\": \"Tom22\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"raw": "{\n    \"customerId\": \"639ffe04cccffb49470ac960\",\n    \"customerName\": \"Jack\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction samples\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,7 +111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customerId\": \"639d0e7c36a\",\n    \"customerName\": \"Tom2\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"raw": "{\n    \"customerId\": \"639ffe04cccffb49470ac961\",\n    \"customerName\": \"Tom2\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -137,7 +137,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"a\",\n    \"password\": \"a\"\n}",
+							"raw": "{\n    \"username\": \"Jack\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -172,12 +172,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/customer/authenticate",
+							"raw": "{{host}}/customers/authenticate",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer",
+								"customers",
 								"authenticate"
 							]
 						}
@@ -196,7 +196,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cinemaName\": \"MCL Tusen Wan 4\",\n    \"address\": \"A sample address in Tusen Wan\",\n    \"floorPlan\": [[true, true, true], [true, true, true], [true, true, false]]\n}",
+							"raw": "{\n    \"cinemaName\": \"MCL Tusen Wan 5\",\n    \"address\": \"A sample address in Tusen Wan 2\",\n    \"floorPlan\": [[true, true, true], [true, true, true], [true, true, false]]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,13 +204,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/movie/cinema",
+							"raw": "{{host}}/movie/cinemas",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"cinema"
+								"cinemas"
 							]
 						}
 					},
@@ -222,13 +222,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/cinema",
+							"raw": "{{host}}/movie/cinemas",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"cinema"
+								"cinemas"
 							],
 							"query": [
 								{
@@ -247,14 +247,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/cinema/639d17a7e3f38a122b282cc2",
+							"raw": "{{host}}/movie/cinemas/639fffd359aab33beac6d5ce",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"cinema",
-								"639d17a7e3f38a122b282cc2"
+								"cinemas",
+								"639fffd359aab33beac6d5ce"
 							]
 						}
 					},
@@ -266,13 +266,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/film/639d62700090d25ba4cb58d5/cinema",
+							"raw": "{{host}}/movie/films/639d62700090d25ba4cb58d5/cinema",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"film",
+								"films",
 								"639d62700090d25ba4cb58d5",
 								"cinema"
 							]
@@ -292,7 +292,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"datetime\": \"2022-12-22T03:45:00\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"639d62700090d25ba4cb58d5\",\n    \"pricing\":[\n        {\n        \"item\": \"adult\",\n        \"price\": 100\n        },\n        {\n        \"item\": \"student\",\n        \"price\": 70\n        }\n    ]\n}",
+							"raw": "{\n    \"datetime\": \"2022-12-22T03:45:00\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"639ffbf1cccffb49470ac95d\",\n    \"pricing\":[\n        {\n        \"item\": \"adult\",\n        \"price\": 100\n        },\n        {\n        \"item\": \"student\",\n        \"price\": 70\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -300,13 +300,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/movie/session",
+							"raw": "{{host}}/movie/sessions",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"session"
+								"sessions"
 							]
 						}
 					},
@@ -318,14 +318,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/session/639d70ebc51ff209c2bdb6bf",
+							"raw": "{{host}}/movie/sessions/63a0001859aab33beac6d5cf",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"session",
-								"639d70ebc51ff209c2bdb6bf"
+								"sessions",
+								"63a0001859aab33beac6d5cf"
 							]
 						}
 					},
@@ -343,7 +343,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"movieName\": \"Movie 9\",\n    \"description\": \"movie 9 description\",\n    \"duration\": \"116\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\"\n}",
+							"raw": "{\n    \"movieName\": \"Advengers\",\n    \"description\": \"action movie\",\n    \"duration\": \"116\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\",\n    \"thumbnailUrl\" : \"https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FM%2FMV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU%40._V1_.jpg&imgrefurl=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt0848228%2F&tbnid=voHvbJDM2LQYlM&vet=12ahUKEwj0s9bF_oT8AhVM15QKHWAIBasQMygAegUIARCPAg..i&docid=6Ljp91BQ5f-14M&w=800&h=1184&q=avengers&ved=2ahUKEwj0s9bF_oT8AhVM15QKHWAIBasQMygAegUIARCPAg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -351,13 +351,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/movie/film",
+							"raw": "{{host}}/movie/films",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"film"
+								"films"
 							]
 						}
 					},
@@ -369,14 +369,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/film/639d61e87b446627273d27f4",
+							"raw": "{{host}}/movie/films/639ffbf1cccffb49470ac95d",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"film",
-								"639d61e87b446627273d27f4"
+								"films",
+								"639ffbf1cccffb49470ac95d"
 							]
 						}
 					},
@@ -388,13 +388,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/film?from=2022-11-18T03:45:42.01&to=2023-12-18T03:45:42.01&ascending=false",
+							"raw": "{{host}}/movie/films",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
-								"film"
+								"films"
 							],
 							"query": [
 								{
@@ -414,15 +414,18 @@
 								},
 								{
 									"key": "from",
-									"value": "2022-11-18T03:45:42.01"
+									"value": "2022-11-18T03:45:42.01",
+									"disabled": true
 								},
 								{
 									"key": "to",
-									"value": "2023-12-18T03:45:42.01"
+									"value": "2023-12-18T03:45:42.01",
+									"disabled": true
 								},
 								{
 									"key": "ascending",
-									"value": "false"
+									"value": "false",
+									"disabled": true
 								}
 							]
 						}
@@ -440,13 +443,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/booking/food",
+							"raw": "{{host}}/booking/foods",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"booking",
-								"food"
+								"foods"
 							],
 							"query": [
 								{
@@ -475,13 +478,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/booking/food/639dc14cb64fa559d6100d0c",
+							"raw": "{{host}}/booking/foods/639dc14cb64fa559d6100d0c",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"booking",
-								"food",
+								"foods",
 								"639dc14cb64fa559d6100d0c"
 							]
 						}
@@ -503,13 +506,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/booking/food",
+							"raw": "{{host}}/booking/foods",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"booking",
-								"food"
+								"foods"
 							]
 						}
 					},
@@ -526,14 +529,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/booking/ticket/639dc5047b94ce26f4ca4c8f",
+							"raw": "{{host}}/booking/tickets/63a0008c55506136f35be591",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"booking",
-								"ticket",
-								"639dc5047b94ce26f4ca4c8f"
+								"tickets",
+								"63a0008c55506136f35be591"
 							]
 						}
 					},
@@ -551,7 +554,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"movieSessionId\": \"639e88b3de3e9e76103bc5f5\",\n    \"ticketRequestItems\": [\n        {\n            \"item\": \"adult\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"student\",\n            \"quantity\": 1\n        }\n    ],\n    \"foodRequestItems\": [\n        {\n            \"item\": \"639dc14cb64fa559d6100d0c\",\n            \"quantity\": 1\n        }\n    ],\n    \"seatingRequests\":[\n        {\n            \"row\": 0,\n            \"column\": 1\n        },\n        {\n            \"row\": 1,\n            \"column\": 0\n        }\n    ]\n}",
+							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"movieSessionId\": \"63a0001859aab33beac6d5cf\",\n    \"ticketRequestItems\": [\n        {\n            \"item\": \"adult\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"student\",\n            \"quantity\": 1\n        }\n    ],\n    \"foodRequestItems\": [\n        {\n            \"item\": \"639dc14cb64fa559d6100d0c\",\n            \"quantity\": 1\n        }\n    ],\n    \"seatingRequests\":[\n        {\n            \"row\": 0,\n            \"column\": 1\n        },\n        {\n            \"row\": 1,\n            \"column\": 0\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -559,13 +562,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/booking/order",
+							"raw": "{{host}}/booking/orders",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"booking",
-								"order"
+								"orders"
 							]
 						}
 					},
@@ -577,13 +580,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/booking/order/639dab4f9370b716102e1294",
+							"raw": "{{host}}/booking/orders/639dab4f9370b716102e1294",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"booking",
-								"order",
+								"orders",
 								"639dab4f9370b716102e1294"
 							],
 							"query": [
@@ -629,7 +632,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"message\": \"test message 4\",\n    \"roomId\": \"639f14bd3a8c6e0ab2e3720a\"\n}",
+							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"message\": \"test message 5\",\n    \"roomId\": \"639f14bd3a8c6e0ab2e3720a\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -637,13 +640,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/forum/room",
+							"raw": "{{host}}/forum/rooms",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"forum",
-								"room"
+								"rooms"
 							]
 						}
 					},
@@ -655,13 +658,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/forum/room?roomID=639f14bd3a8c6e0ab2e3720a",
+							"raw": "{{host}}/forum/rooms?roomID=639f14bd3a8c6e0ab2e3720a",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"forum",
-								"room"
+								"rooms"
 							],
 							"query": [
 								{
@@ -684,13 +687,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/forum/room/639dab4f9370b716102e1294",
+							"raw": "{{host}}/forum/rooms/639dab4f9370b716102e1294",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"forum",
-								"room",
+								"rooms",
 								"639dab4f9370b716102e1294"
 							]
 						}
