@@ -266,15 +266,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/films/639d62700090d25ba4cb58d5/cinema",
+							"raw": "{{host}}/movie/films/639ffbf1cccffb49470ac95d/cinemas",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"movie",
 								"films",
-								"639d62700090d25ba4cb58d5",
-								"cinema"
+								"639ffbf1cccffb49470ac95d",
+								"cinemas"
 							]
 						}
 					},
@@ -343,7 +343,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"movieName\": \"Advengers\",\n    \"description\": \"action movie\",\n    \"duration\": \"116\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\",\n    \"thumbnailUrl\" : \"https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FM%2FMV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU%40._V1_.jpg&imgrefurl=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt0848228%2F&tbnid=voHvbJDM2LQYlM&vet=12ahUKEwj0s9bF_oT8AhVM15QKHWAIBasQMygAegUIARCPAg..i&docid=6Ljp91BQ5f-14M&w=800&h=1184&q=avengers&ved=2ahUKEwj0s9bF_oT8AhVM15QKHWAIBasQMygAegUIARCPAg\"\n}",
+							"raw": "{\n    \"movieName\": \"Advengers 2\",\n    \"description\": \"action movie\",\n    \"duration\": \"116\",\n    \"thumbnailUrl\" : \"https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FM%2FMV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU%40._V1_.jpg&imgrefurl=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt0848228%2F&tbnid=voHvbJDM2LQYlM&vet=12ahUKEwj0s9bF_oT8AhVM15QKHWAIBasQMygAegUIARCPAg..i&docid=6Ljp91BQ5f-14M&w=800&h=1184&q=avengers&ved=2ahUKEwj0s9bF_oT8AhVM15QKHWAIBasQMygAegUIARCPAg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
