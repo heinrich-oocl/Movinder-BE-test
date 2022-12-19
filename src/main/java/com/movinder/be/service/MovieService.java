@@ -15,9 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
@@ -63,9 +62,25 @@ public class MovieService {
         return cinemaRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Cinema"));
     }
 
+    public List<Cinema> getCinemaByMovieId(String movieId){
+
+        // get set of movie ids
+        Set<String> cinemaIdsSet = findMovieSessionsByMovieId(movieId)
+                .stream()
+                .map(MovieSession::getCinemaId)
+                .collect(Collectors.toSet());
+
+        return cinemaIdsSet.stream().map(this::findCinemaById).collect(Collectors.toList());
+    }
+
     /*
     Movie Session
      */
+
+    public List<MovieSession> findMovieSessionsByMovieId(String movieId){
+        Utility.validateID(movieId);
+        return movieSessionRepository.findByMovieId(movieId);
+    }
 
     public MovieSession addMovieSession(MovieSession movieSession){
         if (movieSession.getSessionId() != null){

@@ -16,6 +16,7 @@ public class MovieSession {
     private LocalDateTime datetime;
     private ArrayList<ArrayList<Boolean>> availableSeatings;
     private String cinemaId;
+    @Indexed
     private String movieId;
     private ArrayList<Pricing> pricing;
 

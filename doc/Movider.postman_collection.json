@@ -259,6 +259,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get cinema by movie id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/film/639d62700090d25ba4cb58d5/cinema",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"film",
+								"639d62700090d25ba4cb58d5",
+								"cinema"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -585,6 +605,11 @@
 								{
 									"key": "to",
 									"value": "2022-11-18T03:45:42.01",
+									"disabled": true
+								},
+								{
+									"key": "ascending",
+									"value": "false",
 									"disabled": true
 								}
 							]
