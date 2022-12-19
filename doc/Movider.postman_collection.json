@@ -15,12 +15,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/customer",
+							"raw": "{{host}}/customers",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -41,12 +41,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/customer",
+							"raw": "{{host}}/customers",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -67,12 +67,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/customer",
+							"raw": "{{host}}/customers",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -93,12 +93,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/customer",
+							"raw": "{{host}}/customers",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -119,12 +119,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/customer",
+							"raw": "{{host}}/customers",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -145,12 +145,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/customer/authenticate",
+							"raw": "{{host}}/customers/authenticate",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"customer",
+								"customers",
 								"authenticate"
 							]
 						}
@@ -222,7 +222,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/cinemas",
+							"raw": "{{host}}/movie/cinemas?cinemaName=mclc",
 							"host": [
 								"{{host}}"
 							],
@@ -233,8 +233,7 @@
 							"query": [
 								{
 									"key": "cinemaName",
-									"value": "mclc",
-									"disabled": true
+									"value": "mclc"
 								}
 							]
 						}
@@ -335,7 +334,27 @@
 					"name": "get movie sessions by movie id and cinema id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/sessions?filmID=639ffbf1cccffb49470ac95d&cinemaID=639d17a7e3f38a122b282cc2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "filmID",
+									"value": "639ffbf1cccffb49470ac95d"
+								},
+								{
+									"key": "cinemaID",
+									"value": "639d17a7e3f38a122b282cc2"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -396,7 +415,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/movie/films",
+							"raw": "{{host}}/movie/films?from=2022-11-18T03:45:42.01&to=2023-12-18T03:45:42.01&ascending=false",
 							"host": [
 								"{{host}}"
 							],
@@ -422,18 +441,15 @@
 								},
 								{
 									"key": "from",
-									"value": "2022-11-18T03:45:42.01",
-									"disabled": true
+									"value": "2022-11-18T03:45:42.01"
 								},
 								{
 									"key": "to",
-									"value": "2023-12-18T03:45:42.01",
-									"disabled": true
+									"value": "2023-12-18T03:45:42.01"
 								},
 								{
 									"key": "ascending",
-									"value": "false",
-									"disabled": true
+									"value": "false"
 								}
 							]
 						}
