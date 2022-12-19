@@ -1,0 +1,705 @@
+{
+	"info": {
+		"_postman_id": "9550a94e-df41-4f07-8383-9b9d209c6c85",
+		"name": "Movider",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19088795"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Sanity check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerName\": \"Ben rw\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639d0e7c36a44e0b1aea317d\",\n    \"customerName\": \"Tom22\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Customer with error (missing name)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639c853751d7937bc0d00665\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Customer not found",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639d0e7c36a\",\n    \"customerName\": \"Tom2\",\n    \"password\": \"password\",\n    \"gender\": \"M\",\n    \"age\": 20,\n    \"status\": \"single\",\n    \"selfIntro\": \"introduction sample\",\n    \"showName\": false,\n    \"showGender\": false,\n    \"showAge\": false,\n    \"showStatus\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate fail with error",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"a\",\n    \"password\": \"a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer/authenticate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Tom22\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customer/authenticate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customer",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cinema",
+			"item": [
+				{
+					"name": "add cinema",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cinemaName\": \"MCL Tusen Wan 4\",\n    \"address\": \"A sample address in Tusen Wan\",\n    \"floorPlan\": [[true, true, true], [true, true, true], [true, true, false]]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/movie/cinema",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"cinema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all cinemas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/cinema",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"cinema"
+							],
+							"query": [
+								{
+									"key": "cinemaName",
+									"value": "mclc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cinema by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/cinema/639d17a7e3f38a122b282cc2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"cinema",
+								"639d17a7e3f38a122b282cc2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie Session",
+			"item": [
+				{
+					"name": "create movie session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"datetime\": \"2022-12-22T03:45:00\",\n    \"cinemaId\": \"639d17a7e3f38a122b282cc2\",\n    \"movieId\": \"639d62700090d25ba4cb58d5\",\n    \"pricing\":[\n        {\n        \"item\": \"adult\",\n        \"price\": 100\n        },\n        {\n        \"item\": \"student\",\n        \"price\": 70\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/movie/session",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get movie session by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/session/639d70ebc51ff209c2bdb6bf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"session",
+								"639d70ebc51ff209c2bdb6bf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Film",
+			"item": [
+				{
+					"name": "create film",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movieName\": \"Movie 9\",\n    \"description\": \"movie 9 description\",\n    \"duration\": \"116\",\n    \"lastShowDateTime\": \"2022-11-16T03:45:42.01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/movie/film",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"film"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get film by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/film/639d61e87b446627273d27f4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"film",
+								"639d61e87b446627273d27f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all film",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movie/film?from=2022-11-18T03:45:42.01&to=2023-12-18T03:45:42.01&ascending=false",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movie",
+								"film"
+							],
+							"query": [
+								{
+									"key": "movieName",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "2022-11-18T03:45:42.01"
+								},
+								{
+									"key": "to",
+									"value": "2023-12-18T03:45:42.01"
+								},
+								{
+									"key": "ascending",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Food",
+			"item": [
+				{
+					"name": "find all food",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/food",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"food"
+							],
+							"query": [
+								{
+									"key": "foodName",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find food by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/food/639dc14cb64fa559d6100d0c",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"food",
+								"639dc14cb64fa559d6100d0c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create food",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"foodName\": \"Coke\",\n    \"description\": \"1L\",\n    \"price\": 30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/booking/food",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"food"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "find ticket by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/ticket/639dc5047b94ce26f4ca4c8f",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"ticket",
+								"639dc5047b94ce26f4ca4c8f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "create booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"movieSessionId\": \"639e88b3de3e9e76103bc5f5\",\n    \"ticketRequestItems\": [\n        {\n            \"item\": \"adult\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"student\",\n            \"quantity\": 1\n        }\n    ],\n    \"foodRequestItems\": [\n        {\n            \"item\": \"639dc14cb64fa559d6100d0c\",\n            \"quantity\": 1\n        }\n    ],\n    \"seatingRequests\":[\n        {\n            \"row\": 0,\n            \"column\": 1\n        },\n        {\n            \"row\": 1,\n            \"column\": 0\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/booking/order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking/order/639dab4f9370b716102e1294",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking",
+								"order",
+								"639dab4f9370b716102e1294"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "2022-11-18T03:45:42.01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2022-11-18T03:45:42.01",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Forum",
+			"item": [
+				{
+					"name": "add message",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"639dab4f9370b716102e1294\",\n    \"message\": \"test message 4\",\n    \"roomId\": \"639f14bd3a8c6e0ab2e3720a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/forum/room",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forum",
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get room messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/forum/room?roomID=639f14bd3a8c6e0ab2e3720a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forum",
+								"room"
+							],
+							"query": [
+								{
+									"key": "movieID",
+									"value": "639f13fc3a8c6e0ab2e37206",
+									"disabled": true
+								},
+								{
+									"key": "roomID",
+									"value": "639f14bd3a8c6e0ab2e3720a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get customer active rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/forum/room/639dab4f9370b716102e1294",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"forum",
+								"room",
+								"639dab4f9370b716102e1294"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8888",
+			"type": "string"
+		}
+	]
+}
