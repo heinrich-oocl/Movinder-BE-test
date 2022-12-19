@@ -65,11 +65,12 @@ public class MovieController {
     @GetMapping("/film")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Movie> getMovie(@RequestParam(defaultValue = "") String movieName,
-                                  @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,
-                                  @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) Integer pageSize,
-                                  @RequestParam(required = false) String from,
-                                  @RequestParam(required = false) String to){
-        return movieService.getMovie(movieName, page, pageSize, from, to);
+                                @RequestParam(defaultValue = DEFAULT_PAGE) Integer page,
+                                @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) Integer pageSize,
+                                @RequestParam(required = false) String from,
+                                @RequestParam(required = false) String to,
+                                @RequestParam(required = false, defaultValue = "true") Boolean ascending){
+        return movieService.getMovie(movieName, page, pageSize, from, to, ascending);
     }
 
     /*

@@ -193,13 +193,13 @@ public class BookingService {
 
     // todo: search past booking sort by time
 
-    public List<Booking> getBookingList(String customerId, Integer page, Integer pageSize, String from, String to){
+    public List<Booking> getBookingList(String customerId, Integer page, Integer pageSize, String from, String to, boolean ascending){
 
         Utility.validateID(customerId);
 
         LocalDateTime fromDate = from == null ? LocalDateTime.now().minusMonths(DEFAULT_BOOKING_SEARCH_PERIOD) : LocalDateTime.parse(from);
         LocalDateTime toDate = to == null ? LocalDateTime.now() : LocalDateTime.parse(to);
-        Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "bookingTime");
+        Pageable pageable = PageRequest.of(page, pageSize, ascending ? Sort.Direction.ASC : Sort.Direction.DESC, "bookingTime");
 
         return bookingRepository.findByCustomerIdAndBookingTimeBetween(customerId, fromDate, toDate, pageable);
     }

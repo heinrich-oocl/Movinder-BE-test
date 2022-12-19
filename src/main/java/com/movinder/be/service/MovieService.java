@@ -152,10 +152,11 @@ public class MovieService {
 
     }
 
-    public List<Movie> getMovie(String movieName, Integer page, Integer pageSize, String from, String to){
+    public List<Movie> getMovie(String movieName, Integer page, Integer pageSize, String from, String to, boolean ascending){
         LocalDateTime fromDate = from == null ? LocalDateTime.now() : LocalDateTime.parse(from);
         LocalDateTime toDate = to == null ? LocalDateTime.now().plusMonths(DEFAULT_MOVIE_SEARCH_PERIOD) : LocalDateTime.parse(to);
-        Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "lastShowDateTime");
+        // todo change sort direction
+        Pageable pageable = PageRequest.of(page, pageSize, ascending ? Sort.Direction.ASC : Sort.Direction.DESC, "lastShowDateTime");
 
         return movieRepository
                 .findBymovieNameIgnoreCaseContainingAndLastShowDateTimeBetween(movieName, fromDate, toDate, pageable);
