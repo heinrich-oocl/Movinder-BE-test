@@ -15,10 +15,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -191,8 +193,6 @@ public class BookingService {
         }
     }
 
-    // todo: search past booking sort by time
-
     public List<Booking> getBookingList(String customerId, Integer page, Integer pageSize, String from, String to, boolean ascending){
 
         Utility.validateID(customerId);
@@ -203,9 +203,6 @@ public class BookingService {
 
         return bookingRepository.findByCustomerIdAndBookingTimeBetween(customerId, fromDate, toDate, pageable);
     }
-
-
-
 
 
     /*
@@ -238,30 +235,8 @@ public class BookingService {
         if (containsNull) {
             throw new RequestDataNotCompleteException("Booking Request");
         }
-
-
-        //todo find way to dedup code
-        containsNull = bookingRequest
-                .getTicketRequestItems()
-                .parallelStream()
-                .anyMatch(requestItem ->
-                        Stream
-                                .of(requestItem.getItem(), requestItem.getQuantity())
-                                .anyMatch(Objects::isNull));
-        if (containsNull) {
-            throw new RequestDataNotCompleteException("Booking Request Item");
-        }
-
-        containsNull = bookingRequest
-                .getFoodRequestItems()
-                .parallelStream()
-                .anyMatch(requestItem ->
-                        Stream
-                                .of(requestItem.getItem(), requestItem.getQuantity())
-                                .anyMatch(Objects::isNull));
-        if (containsNull) {
-            throw new RequestDataNotCompleteException("Food Request Item");
-        }
+        verifyRequestItem(bookingRequest.getTicketRequestItems(), "Booking");
+        verifyRequestItem(bookingRequest.getFoodRequestItems(), "Food");
 
         containsNull = bookingRequest
                 .getSeatingRequests()
@@ -270,6 +245,18 @@ public class BookingService {
                         Stream.of(seatings.getRow(), seatings.getColumn()).anyMatch(Objects::isNull));
         if (containsNull) {
             throw new RequestDataNotCompleteException("Booking Request Seating");
+        }
+    }
+
+    private void verifyRequestItem(ArrayList<RequestItem> requestItems, String domain){
+        boolean containsNull = requestItems
+                .parallelStream()
+                .anyMatch(requestItem ->
+                        Stream
+                                .of(requestItem.getItem(), requestItem.getQuantity())
+                                .anyMatch(Objects::isNull));
+        if (containsNull) {
+            throw new RequestDataNotCompleteException(domain + " Request Item");
         }
     }
 

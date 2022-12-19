@@ -21,6 +21,7 @@ public class Movie {
     private ArrayList<String> movieSessionIds;
     @Indexed
     private LocalDateTime lastShowDateTime;
+    private String thumbnailUrl;
 
     public String getMovieId() {
         return movieId;
@@ -68,5 +69,13 @@ public class Movie {
 
     public void setLastShowDateTime(LocalDateTime lastShowDateTime) {
         this.lastShowDateTime = lastShowDateTime;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }
